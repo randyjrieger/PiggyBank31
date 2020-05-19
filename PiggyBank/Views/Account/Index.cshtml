@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PiggyBank.Models.Account>
+
+@{
+    ViewData["Title"] = "Account Summary";
+}
+
+    <h1>ViewData["Title"]</h1>
+
+<div class="form-border">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccountType)
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.Balance)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td>@Model.Count() accounts retrieved</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
